@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table
-public class ObjectValue implements Serializable{
+public class ContractItem implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,10 +15,17 @@ public class ObjectValue implements Serializable{
     private String name;
 
     @Column
-    private Float price;
+    private String itemGroup;
 
-    public ObjectValue() {
+    ContractItem(){
+    }
 
+    public String getItemGroup() {
+        return itemGroup;
+    }
+
+    public void setItemGroup(String itemGroup) {
+        this.itemGroup = itemGroup;
     }
 
     public Long getId() {
@@ -36,13 +43,4 @@ public class ObjectValue implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
 }
