@@ -17,7 +17,7 @@ public class ContractItem implements Serializable{
     @Column
     private String itemGroup;
 
-    ContractItem(){
+    public ContractItem(){
     }
 
     public String getItemGroup() {
