@@ -1,4 +1,15 @@
 package datacenter.models;
 
-public class Employee {
+import com.fasterxml.jackson.core.SerializableString;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table
+public class Employee extends User implements Serializable{
+
+    public Employee() {
+
+    }
 }
