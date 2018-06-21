@@ -23,9 +23,6 @@ public class Policy implements Serializable {
     @Column
     private Date endDate;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "contract_item", joinColumns = @JoinColumn(name = "policy_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "contract_item_id", referencedColumnName = "id"))
-    protected Set<ContractItem> contractItemSet;
 
     @JsonBackReference
     @ManyToOne
@@ -48,10 +45,9 @@ public class Policy implements Serializable {
     @Column
     private VehicleInsurance vehicleInsurance;
 
-    public Policy(Date startDate, Date endDate, Set<ContractItem> contractItemSet, Seller seller, Collection<Buyer> insuredPersons, Buyer contractor) {
+    public Policy(Date startDate, Date endDate, Seller seller, Collection<Buyer> insuredPersons, Buyer contractor) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.contractItemSet = contractItemSet;
         this.seller = seller;
         this.insuredPersons = insuredPersons;
         this.contractor = contractor;
@@ -80,14 +76,6 @@ public class Policy implements Serializable {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public Set<ContractItem> getContractItemSet() {
-        return contractItemSet;
-    }
-
-    public void setContractItemSet(Set<ContractItem> contractItemSet) {
-        this.contractItemSet = contractItemSet;
     }
 
     public Seller getSeller() {

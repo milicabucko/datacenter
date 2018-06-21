@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -53,7 +55,9 @@ public class CenovnikController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Cenovnik> aktivan() throws ParseException {
-        Cenovnik cenovnik = cenovnikService.getActive("20180511");
+        Date date = new Date();
+        String modifiedDate= new SimpleDateFormat("yyyyMMdd").format(date);
+        Cenovnik cenovnik = cenovnikService.getActive(modifiedDate);
         return new ResponseEntity<>(cenovnik, HttpStatus.OK);
     }
 
